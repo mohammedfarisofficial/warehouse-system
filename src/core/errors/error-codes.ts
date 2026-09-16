@@ -1,0 +1,19 @@
+export enum ErrorCode {
+  BAD_REQUEST = 'BAD_REQUEST',
+  NOT_FOUND = 'NOT_FOUND',
+  INSUFFICIENT_STOCK = 'INSUFFICIENT_STOCK',
+  CONFLICT = 'CONFLICT',
+  INVALID_STATE = 'INVALID_STATE',
+  ALREADY_EXISTS = 'ALREADY_EXISTS',
+  INTERNAL = 'INTERNAL',
+}
+
+export const HTTP_STATUS_MAP: Record<ErrorCode, number> = {
+  [ErrorCode.BAD_REQUEST]: 400,
+  [ErrorCode.NOT_FOUND]: 404,
+  [ErrorCode.INSUFFICIENT_STOCK]: 409,
+  [ErrorCode.CONFLICT]: 409,
+  [ErrorCode.INVALID_STATE]: 409,
+  [ErrorCode.ALREADY_EXISTS]: 409,
+  [ErrorCode.INTERNAL]: 500,
+};
