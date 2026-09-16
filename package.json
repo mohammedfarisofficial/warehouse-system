@@ -1,0 +1,36 @@
+{
+    "name": "warehouse-system",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/src/server.js",
+    "scripts": {
+        "build": "tsc",
+        "start": "node dist/src/server.js",
+        "dev": "tsx src/server.ts",
+        "seed": "tsx src/database/seeds/seed.ts",
+        "test": "npm run test:unit && npm run test:concurrency && npm run test:idempotency && npm run test:expiry",
+        "test:unit": "tsx tests/unit/key-queue.test.ts",
+        "test:concurrency": "tsx tests/integration/concurrency.test.ts",
+        "test:idempotency": "tsx tests/integration/idempotency.test.ts",
+        "test:expiry": "tsx tests/integration/expiry.test.ts",
+        "lint": "eslint 'src/**/*.ts' 'tests/**/*.ts'",
+        "format": "prettier --write 'src/**/*.ts' 'tests/**/*.ts'"
+    },
+    "dependencies": {
+        "better-sqlite3": "^11.3.0",
+        "express": "^4.19.2",
+        "pino": "^9.6.0"
+    },
+    "devDependencies": {
+        "@types/better-sqlite3": "*",
+        "@types/express": "*",
+        "@types/node": "*",
+        "@typescript-eslint/eslint-plugin": "*",
+        "@typescript-eslint/parser": "*",
+        "eslint": "*",
+        "prettier": "*",
+        "tsx": "*",
+        "typescript": "*"
+    },
+    "license": "MIT"
+}
