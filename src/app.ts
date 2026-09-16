@@ -5,6 +5,7 @@ import { requestLoggerMiddleware } from './middleware/request-logger.js';
 
 import stockRoutes from './modules/stock/stock.routes.js';
 import reservationRoutes from './modules/reservation/reservation.routes.js';
+import transactionRoutes from './modules/transaction/transaction.routes.js';
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(requestLoggerMiddleware);
 // Routes
 app.use('/stock', stockRoutes);
 app.use('/reservations', reservationRoutes);
+app.use('/transactions', transactionRoutes);
 
 app.get('/health', (_req, res) => { res.json({ ok: true }) });
 
