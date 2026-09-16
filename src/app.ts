@@ -1,23 +1,21 @@
 import express from 'express';
-import { config } from './config/index.js';
 import { requestIdMiddleware } from './middleware/request-id.js';
 import { errorHandlerMiddleware } from './middleware/error-handler.js';
 import { requestLoggerMiddleware } from './middleware/request-logger.js';
 
+import stockRoutes from './modules/stock/stock.routes.js';
+
 const app = express();
 
+// Global Middlewares
 app.use(express.json());
 app.use(requestIdMiddleware);
 app.use(requestLoggerMiddleware);
 
-app.get('/health', (_req, res) => {
-  res.json({
-    ok: true,
-    holdWindowMs: config.holdWindowMs,
-    environment: config.nodeEnv,
-    uptime: process.uptime(),
-  });
-});
+// Routes
+app.use('/stock', stockRoutes);
+
+app.get('/health', (_req, res) => { res.json({ ok: true }) });
 
 app.use(errorHandlerMiddleware);
 
